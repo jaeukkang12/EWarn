@@ -1,4 +1,12 @@
-name: '${pluginName}'
+name: '${name}'
 version: '${version}'
 main: '${group}.${packageName}.${pluginName}Plugin'
 api-version: 1.17
+depend:
+  - ELib
+
+commands:
+  경고:
+    alias: ["warn", "warning", "rudrh"]
+    description: "경고 명령어"
+    usage: "/경고 도움말"

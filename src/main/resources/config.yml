@@ -1,0 +1,11 @@
+# 최대 경고 횟수입니다.
+# e.g. 5로 설정 시 경고 5회 이상 누적 시 action 항목이 실행됩니다.
+maxWarn: 5
+
+# 경고 누적 횟수에 따라 실행됩니다.
+# e.g. KICK(킥), BAN(벤), BAN_IP(IP벤)
+action: BAN
+
+# 경고 추가, 차감, 설정 시 메세지 출력이 되는 방식입니다.
+# PUBLIC: 전체 채팅, PRIVATE: 개인 채팅
+message: PUBLIC

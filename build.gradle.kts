@@ -2,11 +2,11 @@ import java.util.Locale
 
 plugins {
     id ("java")
-    id("io.papermc.paperweight.userdev") version "1.5.3" // Paperweight의 최신 버전
+    id("io.papermc.paperweight.userdev") version "1.5.3"
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17)) // Paper는 Java 17을 권장
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 }
 
 repositories {
@@ -26,7 +26,7 @@ extra.apply {
             if (char.isLowerCase()) char.titlecase(Locale.getDefault()) else char.toString()
         }
     })
-    set("packageName", project.name.replace("-", ""))
+    set("packageName", (project.name.replace("-", "")).lowercase())
 }
 
 tasks.withType<JavaCompile> {
@@ -41,5 +41,3 @@ tasks {
         }
     }
 }
-
-
