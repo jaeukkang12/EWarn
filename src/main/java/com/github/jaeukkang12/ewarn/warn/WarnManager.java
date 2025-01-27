@@ -4,6 +4,7 @@ import com.github.jaeukkang12.elib.config.Config;
 import com.github.jaeukkang12.ewarn.EWarnPlugin;
 import com.github.jaeukkang12.ewarn.warn.enums.Action;
 import com.github.jaeukkang12.ewarn.warn.enums.Type;
+import com.github.jaeukkang12.ewarn.warn.exception.CannotFindPlayer;
 import com.github.jaeukkang12.ewarn.warn.exception.WarningCannotBeMinus;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
@@ -66,6 +67,15 @@ public final class WarnManager extends JavaPlugin {
     }
 
     /**
+     * 플레이어의 경고 횟수를 리턴합니다.
+     * @param player 플레이어
+     * @return int 경고횟수
+     */
+    public int get(Player player) {
+        return warnData.getInt(getUUID(player.getName()) + "");
+    }
+
+    /**
      * 최대경고 횟수를 리턴합니다.
      * @return int 최대경고 횟수
      */
@@ -80,6 +90,28 @@ public final class WarnManager extends JavaPlugin {
      */
     public void add(String name, int amount) {
         warnData.setInt(getUUID(name) + "", get(name) + amount);
+        check(name);
+    }
+
+    public void add(Player player, int amount) {
+        String name = player.getName();
+        warnData.setInt(getUUID(name) + "", get(name) + amount);
+        check(name);
+    }
+
+    /**
+     * 플레이어의 경고를 차감합니다.
+     * @param player 플레이어
+     * @param amount 횟수
+     */
+    public void remove(Player player, int amount) {
+        String name = player.getName();
+        int currentAmount = get(name);
+        if (currentAmount - amount < 0) {
+            throw new WarningCannotBeMinus();
+        }
+
+        warnData.setInt(getUUID(name) + "", get(name) - amount);
         check(name);
     }
 
@@ -107,6 +139,22 @@ public final class WarnManager extends JavaPlugin {
         if (amount < 0) {
             throw new WarningCannotBeMinus();
         }
+
+        warnData.setInt(getUUID(name) + "", amount);
+        check(name);
+    }
+
+    /**
+     * 플레이어의 경고를 설정합니다.
+     * @param player 플레이어
+     * @param amount 횟수
+     */
+    public void set(Player player, int amount) {
+        if (amount < 0) {
+            throw new WarningCannotBeMinus();
+        }
+
+        String name = player.getName();
 
         warnData.setInt(getUUID(name) + "", amount);
         check(name);
@@ -179,6 +227,9 @@ public final class WarnManager extends JavaPlugin {
      * @return {@link UUID} UUID
      */
     public UUID getUUID(String name) {
+        if (!playerData.containsKey(name)) {
+            throw new CannotFindPlayer();
+        }
         return UUID.fromString(playerData.getString(playerData.getString(name)));
     }
 
@@ -190,6 +241,11 @@ public final class WarnManager extends JavaPlugin {
      */
     public boolean nickIsChanged(Player player) {
         boolean isChanged = false;
+
+        if (!playerData.containsKey(player.getName())) {
+            registerPlayer(player);
+        }
+
         for (String name : playerData.getConfig().getKeys(false)) {
             UUID uuidData = getUUID(name);
 
@@ -199,7 +255,6 @@ public final class WarnManager extends JavaPlugin {
                 isChanged = true;
 
                 playerData.delete(name);
-                playerData.setString(player.getName(), playerUuid + "");
                 break;
             }
         }
