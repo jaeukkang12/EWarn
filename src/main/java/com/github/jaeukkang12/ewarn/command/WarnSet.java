@@ -14,6 +14,11 @@ public class WarnSet extends WarnCommandBase {
         String targetName = validatePlayer(args[1], sender);
         if (targetName == null) return;
 
+        if (args.length == 2) {
+            sender.sendMessage(NOT_EXIST_AMOUNT);
+            return;
+        }
+
         Integer amount = validateAmount(args[2], sender, true);
         if (amount == null) return;
 
