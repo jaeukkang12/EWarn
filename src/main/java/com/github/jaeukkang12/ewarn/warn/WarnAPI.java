@@ -1,5 +1,6 @@
 package com.github.jaeukkang12.ewarn.warn;
 
+import org.bukkit.Bukkit;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -13,7 +14,7 @@ public final class WarnAPI {
 
     @ApiStatus.Internal
     static void register(WarnManager warnManager) {
-        warnManager = null;
+        WarnAPI.warnManager = warnManager;
     }
 
     @ApiStatus.Internal
