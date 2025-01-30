@@ -8,13 +8,14 @@ import org.bukkit.event.Listener;
 
 public class PlayerJoinEvent implements Listener {
     @EventHandler
-    public void playerJoin(Player event) {
+    public void playerJoin(org.bukkit.event.player.PlayerJoinEvent event) {
         Player player = event.getPlayer();
         WarnManager warnManager = WarnAPI.get();
-        if (!player.hasPlayedBefore()) {
-            warnManager.registerPlayer(player);
-        } else {
-            warnManager.nickIsChanged(player);
+        try {
+            warnManager.getUUID(player.getName());
+            warnManager.isChanged(player);
+        } catch (Exception e) {
+            warnManager.registerUser(player);
         }
     }
 }
