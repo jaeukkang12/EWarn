@@ -15,7 +15,7 @@ public class WarnAdd extends WarnCommandBase {
         String targetName = validatePlayer(args[1], sender);
         if (targetName == null) return;
 
-        Integer amount = validateAmount(args[2], sender, false);
+        Integer amount = validateAmount((args.length == 2) ? null : args[2], sender, false);
         if (amount == null) return;
 
         try {
