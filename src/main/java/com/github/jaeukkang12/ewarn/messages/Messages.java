@@ -1,6 +1,7 @@
 package com.github.jaeukkang12.ewarn.messages;
 
 import com.github.jaeukkang12.elib.config.Config;
+import com.github.jaeukkang12.elib.utils.StringUtil;
 
 import java.util.List;
 
@@ -54,8 +55,8 @@ public final class Messages {
         CHECK = messages.getMessage("messages.check");
         HELP = messages.getMessages("messages.help");
         RELOAD = messages.getMessages("messages.reload");
-        KICK = messages.getMessage("messages.reason.kick");
-        BAN = messages.getMessage("messages.reason.ban");
-        BAN_IP = messages.getMessage("messages.reason.banIp");
+        KICK = StringUtil.color(messages.getString("messages.reason.kick"));
+        BAN = StringUtil.color(messages.getString("messages.reason.ban"));
+        BAN_IP = StringUtil.color(messages.getString("messages.reason.banIp"));
     }
 }
