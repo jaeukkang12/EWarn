@@ -11,7 +11,11 @@ import static com.github.jaeukkang12.ewarn.messages.Messages.*;
 
 public abstract class WarnCommandBase {
 
-    protected WarnManager warnManager = WarnAPI.get();
+    protected static WarnManager warnManager;
+
+    public static void init() {
+        warnManager = WarnAPI.get();
+    }
 
 
     protected String validatePlayer(String targetName, CommandSender sender) {

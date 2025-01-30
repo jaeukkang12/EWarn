@@ -16,12 +16,12 @@ public class WarnTab implements TabCompleter {
         List<String> list = new ArrayList<>();
         if (args.length == 1) {
             if (sender.hasPermission("ewarn.help")) list.add("도움말");
+            if (sender.hasPermission("ewarn.action")) list.add("액션");
             if (sender.hasPermission("ewarn.add")) list.add("추가");
             if (sender.hasPermission("ewarn.remove")) list.add("차감");
             if (sender.hasPermission("ewarn.set")) list.add("설정");
             if (sender.hasPermission("ewarn.check")) list.add("확인");
             if (sender.hasPermission("ewarn.reload")) list.add("리로드");
-
             return list;
         } else if (args.length == 2) {
             if (args[0].equals("추가") || args[0].equals("설정") || args[0].equals("차감") || args[0].equals("확인")) {
