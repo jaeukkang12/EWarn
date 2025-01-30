@@ -17,6 +17,7 @@ public final class Messages {
     public static String CANNOT_FIND_PLAYER;
     public static String AMOUNT_CANNOT_BE_MINUS;
     public static String INVALID_AMOUNT;
+    public static String NOT_EXIST_AMOUNT;
 
     // MESSAGE
     public static String ACTION;
@@ -46,6 +47,7 @@ public final class Messages {
         CANNOT_FIND_PLAYER = messages.getMessage("errorMessages.cannotFindPlayer");
         AMOUNT_CANNOT_BE_MINUS = messages.getMessage("errorMessages.amountCannotBeMinus");
         INVALID_AMOUNT = messages.getMessage("errorMessages.invalidAmount");
+        NOT_EXIST_AMOUNT = messages.getMessage("errorMessages.notExistAmount");
 
         // MESSAGES
         ACTION = messages.getMessage("messages.action");
