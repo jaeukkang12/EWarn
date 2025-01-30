@@ -26,7 +26,7 @@ public final class Messages {
     public static String SET;
     public static String CHECK;
     public static List<String> HELP;
-    public static List<String> RELOAD;
+    public static String RELOAD;
     public static String KICK;
     public static String BAN;
     public static String BAN_IP;
@@ -56,7 +56,7 @@ public final class Messages {
         SET = messages.getMessage("messages.set");
         CHECK = messages.getMessage("messages.check");
         HELP = messages.getMessages("messages.help");
-        RELOAD = messages.getMessages("messages.reload");
+        RELOAD = messages.getMessage("messages.reload");
         KICK = StringUtil.color(messages.getString("messages.reason.kick"));
         BAN = StringUtil.color(messages.getString("messages.reason.ban"));
         BAN_IP = StringUtil.color(messages.getString("messages.reason.banIp"));

@@ -5,6 +5,8 @@ import com.github.jaeukkang12.ewarn.warn.WarnAPI;
 import com.github.jaeukkang12.ewarn.warn.WarnManager;
 import org.bukkit.command.CommandSender;
 
+import static com.github.jaeukkang12.ewarn.messages.Messages.RELOAD;
+
 
 public class WarnReload {
     @Command(parent = "경고", sub = "리로드", permission = "ewarn.reload")
@@ -12,6 +14,6 @@ public class WarnReload {
         WarnManager warnManager = WarnAPI.get();
         warnManager.reload();
 
-        sender.sendMessage("");
+        sender.sendMessage(RELOAD);
     }
 }
