@@ -8,4 +8,4 @@ action: BAN
 
 # 경고 추가, 차감, 설정 시 메세지 출력이 되는 방식입니다.
 # PUBLIC: 전체 채팅, PRIVATE: 개인 채팅
-message: PUBLIC
+log: PUBLIC
