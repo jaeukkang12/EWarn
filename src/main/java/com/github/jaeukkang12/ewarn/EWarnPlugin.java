@@ -2,9 +2,11 @@ package com.github.jaeukkang12.ewarn;
 
 import com.github.jaeukkang12.elib.command.CommandHandler;
 import com.github.jaeukkang12.ewarn.command.*;
+import com.github.jaeukkang12.ewarn.command.abstracts.WarnCommandBase;
 import com.github.jaeukkang12.ewarn.event.PlayerJoinEvent;
 import com.github.jaeukkang12.ewarn.messages.Messages;
 import com.github.jaeukkang12.ewarn.tab.WarnTab;
+import com.github.jaeukkang12.ewarn.warn.WarnAPI;
 import com.github.jaeukkang12.ewarn.warn.WarnManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,9 +32,13 @@ public class EWarnPlugin extends JavaPlugin {
         commandSetUp();
 
         // EVENT
+        eventSetUp();
 
         // MESSAGES
         Messages.init();
+
+        // WARN
+        new WarnManager();
     }
 
     private void commandSetUp() {
